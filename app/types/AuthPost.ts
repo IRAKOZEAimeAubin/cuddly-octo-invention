@@ -13,6 +13,6 @@ export type AuthPost = {
             message: string
             postId: string
             userId: string
-        }
-    }
+        }[]
+    }[]
 }
