@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { useState } from "react"
+import Toggle from "./Toggle";
 
 type EditProps = {
     id: string
@@ -16,22 +17,26 @@ type EditProps = {
 }
 
 const EditPost = ( { avatar, name, content, comments, id }: EditProps ) => {
-  return (
-    <div className="bg-white my-8 p-8 rounded-lg">
-          <div className="flex items-center gap-2">
-              <Image width={32} height={32} src={avatar} alt={name} className="rounded-full" />
-              <h3 className="font-bold text-gray-700">{name}</h3>
-          </div>
-          <div className="my-8">
-              <p className="break-all">{content}</p>
-          </div>
-          <div className="flex items-center gap-4">
-              <p className="text-sm font-bold text-gray-700">
-                  {comments?.length} Comments
-              </p>
-          </div>
-    </div>
-  )
+    return (
+        <>
+            <div className="bg-white my-8 p-8 rounded-lg">
+                <div className="flex items-center gap-2">
+                    <Image width={32} height={32} src={avatar} alt={name} className="rounded-full" />
+                    <h3 className="font-bold text-gray-700">{name}</h3>
+                </div>
+                <div className="my-8">
+                    <p className="break-all">{content}</p>
+                </div>
+                <div className="flex items-center gap-4">
+                    <p className="text-sm font-bold text-gray-700">
+                        {comments?.length} Comments
+                    </p>
+                    <button className="text-sm font-bold text-red-600 uppercase">Delete</button>
+                </div>
+            </div>
+            <Toggle />
+        </>
+    )
 }
 
 export default EditPost
