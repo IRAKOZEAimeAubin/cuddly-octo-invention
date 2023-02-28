@@ -5,7 +5,6 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 import axios, { AxiosError } from "axios"
 import toast from "react-hot-toast"
 
-
 const AddPost = () => {
     const [ content, setContent ] = useState( "" );
     const [ isDisabled, setIsDisabled ] = useState( false );
@@ -17,6 +16,7 @@ const AddPost = () => {
         {
             onError: ( err ) => {
                 if ( err instanceof AxiosError ) toast.error( err?.response?.data.message, { id: toastPostID } )
+                setIsDisabled( false )
             },
             onSuccess: ( data ) => {
                 toast.success( "Post made successfully! 🔥", { id: toastPostID } )
